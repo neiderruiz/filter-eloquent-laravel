@@ -32,7 +32,7 @@ public function index(Request $request)
     }
 
 // your url request
-?paginate=true&search=[articles,name,laravel]&with=[articles:id,title]
+?paginate=true&q=[articles,name,laravel]&with=[articles:id,title]
 
 // get specific fields
 &inputs=id,name,email
@@ -72,21 +72,21 @@ public function index(Request $request)
 
 ```php
 // your url request
-&search=[name,your text]
+&q=[name,your text]
 ```
 
 ## Search With Relation
 
 ```php
 // your url request
-&search=[articles,name,your text]
+&q=[articles,name,your text]
 ```
 
 ## Search With Multiple Relation
 
 ```php
 // your url request
-&search=[articles,name,your text][articles,description,your text]
+&q=[articles,name,your text][articles,description,your text]
 ```
 
 ## Where
@@ -115,3 +115,9 @@ public function index(Request $request)
 // example two
 &where=[articles,title,mi titulo,like]
 ```	
+
+## with count
+
+```php
+&withCount=[articles]
+```
