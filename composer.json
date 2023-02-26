@@ -3,7 +3,7 @@
     "description": "filter query eloquent laravel",
     "type": "library",
     "license": "MIT",
-    "version": "1.0",
+    "version": "1.1",
     "autoload": {
         "psr-4": {
             "Neiderruiz\\FilterEloquentLaravel\\": "src/"
