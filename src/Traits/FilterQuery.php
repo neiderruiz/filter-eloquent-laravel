@@ -10,6 +10,11 @@ trait FilterQuery
     public $actionWhere = ['like', '=', '==', '>=', '<=', '!=', '>', '<'];
     public $filter;
 
+    /**
+     * @param Builder $filter
+     * @param array $relations
+     * @param array $relations_count
+     */
     function __construct($filter, $relations, $relations_count)
     {
         $this->filter = $filter;
@@ -17,7 +22,10 @@ trait FilterQuery
         $this->relations_count = $relations_count;
     }
 
-    static function clearQuery($itemRequest): string
+    /**
+     * @return string
+     */
+    static function clearQuery(string $itemRequest): string
     {
         $query = Str::replaceFirst('[', '', $itemRequest);
         return Str::replaceLast(']', '', $query);
@@ -46,7 +54,6 @@ trait FilterQuery
             $filters = explode('][', $query);
 
             foreach ($filters as $filter) {
-
                 $this->filter->with($filter);
             }
         }
@@ -76,7 +83,6 @@ trait FilterQuery
 
     public function generalFilter($filter)
     {
-
         $xFilter = explode(',', $filter);
         $relation = in_array($xFilter[0], $this->relations);
         $count = count($xFilter);
@@ -226,6 +232,7 @@ trait FilterQuery
     {
 
         $query = request()->q;
+
         if (!is_null($query)) {
 
             $query = self::clearQuery($query);
@@ -285,7 +292,6 @@ trait FilterQuery
     {
         $data = $this->filter->first();
 
-
         return $data;
     }
 
@@ -293,6 +299,7 @@ trait FilterQuery
     public function orderBy()
     {
         $query = request()->order_by;
+        
         if (!is_null($query)) {
 
             $query = self::clearQuery($query);
