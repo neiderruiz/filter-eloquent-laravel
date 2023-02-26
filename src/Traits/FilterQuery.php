@@ -25,7 +25,7 @@ trait FilterQuery
 
     public function addWithCount(): void
     {
-        $query = request()->with_count;
+        $query = request()->count;
 
         if (!is_null($query)) {
 
@@ -225,7 +225,7 @@ trait FilterQuery
     public function search(): void
     {
 
-        $query = request()->search;
+        $query = request()->q;
         if (!is_null($query)) {
 
             $query = self::clearQuery($query);
